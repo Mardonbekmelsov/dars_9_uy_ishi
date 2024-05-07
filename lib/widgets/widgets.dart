@@ -288,21 +288,178 @@ makeWork(String heading, String info, Widget image, double width) {
   return Container(
     width: width > 800 ? 0.25.sw : 350.w,
     child: Column(
-      crossAxisAlignment: width>800? CrossAxisAlignment.start:CrossAxisAlignment.center,
+      crossAxisAlignment:
+          width > 800 ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       children: [
         Container(
           height: 50.h,
-          decoration: BoxDecoration(shape: BoxShape.circle),
+          decoration: const BoxDecoration(shape: BoxShape.circle),
           child: image,
         ),
         heading.boldStyle(),
         Text(
           info,
-          style: TextStyle(color: Colors.black),
-          textAlign: width>800? TextAlign.start:TextAlign.center,
+          style: const TextStyle(color: Colors.black),
+          textAlign: width > 800 ? TextAlign.start : TextAlign.center,
         ),
         20.height(),
       ],
     ),
+  );
+}
+
+makeProfile(List<Map<String, dynamic>> accounts, double width) {
+  return width > 800
+      ? Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            for (var account in accounts)
+              Row(
+                children: [
+                  Image.asset(
+                    account["image"],
+                    width: 50,
+                    height: 50,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        account["name"],
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        account["job"],
+                      ),
+                    ],
+                  ),
+                ],
+              )
+          ],
+        )
+      : Column(
+          children: [
+            Image.asset(
+              accounts[0]["image"],
+              width: 50,
+              height: 50,
+            ),
+            Text(
+              accounts[0]["name"],
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              accounts[0]["job"],
+            ),
+          ],
+        );
+}
+
+installBar(double width) {
+  return [
+    Container(
+      width: width > 800 ? 0.35.sw : 0.7.sw,
+      child: Text("84% of employees who use trust their direct manager",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+          textAlign: width < 800 ? TextAlign.center : TextAlign.start),
+    ),
+    width > 800
+        ? Row(
+            children: [
+              Image.asset(
+                "assets/images/google_play_logo.png",
+                width: 180,
+                height: 55,
+              ),
+              SizedBox(width: 10),
+              Image.asset(
+                "assets/images/app_store_logo.png",
+                width: 180,
+                height: 55,
+              ),
+            ],
+          )
+        : Column(
+            children: [
+              10.height(),
+              Image.asset(
+                "assets/images/google_play_logo.png",
+                width: 180,
+                height: 55,
+              ),
+              10.height(),
+              Image.asset(
+                "assets/images/app_store_logo.png",
+                width: 180,
+                height: 55,
+              ),
+            ],
+          ),
+  ];
+}
+
+companyColumn() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text("About Us", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Blog", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Careers", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Contact Us", style: TextStyle(color: Colors.white)),
+    ],
+  );
+}
+
+supportColumn() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text("Help Center", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Safety Center", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Community", style: TextStyle(color: Colors.white)),
+    ],
+  );
+}
+
+legalColumn() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text("Cookies Policy", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Privacy Policy", style: TextStyle(color: Colors.white)),
+      5.height(),
+      Text("Terms Of Service", style: TextStyle(color: Colors.white)),
+    ],
+  );
+}
+
+installColumn() {
+  return Column(
+    children: [
+      Text(
+        "Install App",
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+      5.height(),
+      Image.asset(
+        "assets/images/google_play_dark.png",
+        width: 165,
+        height: 50,
+      ),
+      5.height(),
+      Image.asset(
+        "assets/images/app_store_dark.png",
+        width: 165,
+        height: 50,
+      ),
+    ],
   );
 }

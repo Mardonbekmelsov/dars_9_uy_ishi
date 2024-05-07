@@ -9,6 +9,6 @@ extension Box on int {
 
 extension Style on String{
   boldStyle(){
-    return Text(this, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 18.h),);
+    return Text(this, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 18.h),textAlign: TextAlign.center,);
   }
 }
