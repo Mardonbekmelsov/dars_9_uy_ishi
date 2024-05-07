@@ -283,3 +283,26 @@ List<Widget> Invitations(double width) {
     ),
   ];
 }
+
+makeWork(String heading, String info, Widget image, double width) {
+  return Container(
+    width: width > 800 ? 0.25.sw : 350.w,
+    child: Column(
+      crossAxisAlignment: width>800? CrossAxisAlignment.start:CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: 50.h,
+          decoration: BoxDecoration(shape: BoxShape.circle),
+          child: image,
+        ),
+        heading.boldStyle(),
+        Text(
+          info,
+          style: TextStyle(color: Colors.black),
+          textAlign: width>800? TextAlign.start:TextAlign.center,
+        ),
+        20.height(),
+      ],
+    ),
+  );
+}

@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(391,856),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: FirstPage(),
       ),
     );

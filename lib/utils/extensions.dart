@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension Box on int {
   height() {
-    return SizedBox(height: toDouble());
+    return SizedBox(height: toDouble().h);
   }
 }
 
